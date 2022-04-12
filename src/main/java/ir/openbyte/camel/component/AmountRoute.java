@@ -26,7 +26,8 @@ public class AmountRoute extends RouteBuilder {
                 .choice()
                     .when(header("amount").convertTo(Integer.class).isGreaterThanOrEqualTo(1))
                         .process(greaterProcess)
-                    .otherwise()
+                        .to("{{camel.jdbc.to.tamount}}")
+                .otherwise()
                         .process(otherwiseProcess);
 
     }

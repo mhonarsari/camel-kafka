@@ -11,3 +11,6 @@ camel:
     from:
       card-content: "kafka:${kafka.topic.card-content}?brokers=${kafka.brokers}&groupId=card&consumersCount=${kafka.consumer-count.card-content}&${camel.kafka.manual-commit}"
 
+  jdbc:
+    to:
+      tamount: "jdbc:myDataSource"

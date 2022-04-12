@@ -71,17 +71,33 @@
 		</dependency>
 		<!-- 	-->
 		<dependency>
-
 			<groupId>org.apache.camel</groupId>
-
 			<artifactId>camel-netty</artifactId>
 			<version>${camel.version}</version>
-
 		</dependency>
+		<dependency>
+			<groupId>org.apache.camel.springboot</groupId>
+			<artifactId>camel-jdbc-starter</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.6</version>
 		</dependency>
 	</dependencies>
 

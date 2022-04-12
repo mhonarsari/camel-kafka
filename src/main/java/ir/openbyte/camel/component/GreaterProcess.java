@@ -11,6 +11,7 @@ public class GreaterProcess implements Processor {
     @Override
     public void process(Exchange exchange) throws Exception {
         System.out.println("with jpa insert into Greater");
+        exchange.getIn().setBody("INSERT into t_amount(inputdata) values ('"+exchange.getIn().getBody()+"')");
 
     }
 }
