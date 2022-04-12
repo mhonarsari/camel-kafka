@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AmountRoute extends RouteBuilder {
 
-    public final String ROUTE_ID_SEND_SMS = "TEST";
+    public final String ROUTE_ID = "TEST";
 
     private final MyProcess myProcess;
     private final GreaterProcess greaterProcess;
@@ -20,8 +20,8 @@ public class AmountRoute extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        from("{{camel.kafka.from.card-content-sms}}")
-                .routeId(ROUTE_ID_SEND_SMS)
+        from("{{camel.kafka.from.card-content}}")
+                .routeId(ROUTE_ID)
                 .process(myProcess)
                 .choice()
                     .when(header("amount").convertTo(Integer.class).isGreaterThanOrEqualTo(1))
