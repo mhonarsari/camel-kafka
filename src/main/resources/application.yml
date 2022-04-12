@@ -1,0 +1,20 @@
+kafka:
+  brokers: "127.0.0.1:9092"
+  consumer-count:
+    notify-input: 1
+    filtered-content-sms: 1
+  topic:
+    notify-input: "notifierInputTopic"
+    filtered-content-sms: "smsTopic"
+
+camel:
+  kafka:
+    manual-commit: "autoCommitEnable=false&autoCommitOnStop=none&autoOffsetReset=earliest"
+    from:
+      sms: "kafka:${kafka.topic.notify-input}?brokers=${kafka.brokers}&groupId=sms&consumersCount=${kafka.consumer-count.notify-input}&${camel.kafka.manual-commit}"
+      filtered-content-sms: "kafka:${kafka.topic.filtered-content-sms}?brokers=${kafka.brokers}&groupId=sms&consumersCount=${kafka.consumer-count.filtered-content-sms}&${camel.kafka.manual-commit}"
+      naja: "kafka:${kafka.topic.notify-input}?brokers=${kafka.brokers}&groupId=naja&consumersCount=${kafka.consumer-count.notify-input}&${camel.kafka.manual-commit}"
+      central-bank: "kafka:${kafka.topic.notify-input}?brokers=${kafka.brokers}&groupId=centralBank&consumersCount=${kafka.consumer-count.notify-input}&${camel.kafka.manual-commit}"
+    to:
+      filtered-content-sms: "kafka:${kafka.topic.filtered-content-sms}?brokers=${kafka.brokers}"
+
